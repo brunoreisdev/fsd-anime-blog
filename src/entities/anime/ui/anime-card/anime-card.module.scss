@@ -1,8 +1,11 @@
 @use "@shared/styles/variables" as *;
 
+
+
 .wrapper {
+  --width-card: 310px;
   border-radius: 8px;
-  width: 300px;
+  width: var(--width-card);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -31,7 +34,7 @@
 }
 
 .cardBody {
-  width: 300px;
+  width: var(--width-card);
   display: flex;
   flex: 1;
   align-items: flex-start;
