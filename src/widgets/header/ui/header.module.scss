@@ -1,0 +1,71 @@
+@use "@shared/styles/variables" as *;
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $default;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+  border: solid 1px $neutrals-extra-light;
+  position: absolute;
+  top: 0;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}
+
+.searchContainer {
+  display: none;
+  background-color: transparent;
+  padding: 8px;
+  border-radius: 50px;
+  border: solid 1px $neutrals-extra-light;
+  justify-content: space-between;
+  max-width: 400px;
+
+  @media (min-width: 800px) {
+    display: flex;
+    width: 100%;
+  }
+
+  @media (min-width: 600px) and (max-width: 799px) {
+    display: flex;
+    width: 300px;
+  }
+
+  &:hover {
+    border-color: $accent-medium;
+  }
+
+  &:focus-within {
+    border-color: $accent-medium;
+  }
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 0 0 0 8px;
+  width: 90%;
+  color: $neutrals-extra-dark;
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+}
+
+.searchButton {
+  background-color: $primary-light;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
