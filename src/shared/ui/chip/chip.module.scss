@@ -1,0 +1,15 @@
+@use "@shared/styles/variables" as *;
+
+.chipWrapper {
+  border-radius: 50px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  width: auto;
+  background-color: $neutrals-extra-light;
+  color: $neutrals-dark;
+
+  > :global(.caption) {
+    font-weight: 500;
+  }
+}
