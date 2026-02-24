@@ -18,8 +18,14 @@
         "name": "next"
       }
     ],
+    "baseUrl": "src",
     "paths": {
-      "@/src/components/commons/*": ["./src/*"]
+      "@shared/*": ["shared/*"],
+      "@entities/*": ["entities/*"],
+      "@features/*": ["features/*"],
+      "@widgets/*": ["widgets/*"],
+      "@pages/*": ["pages/*"],
+      "@app/*": ["app/*"]
     }
   },
   "include": [

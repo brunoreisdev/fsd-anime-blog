@@ -3,12 +3,12 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 html,
 body {
@@ -35,8 +35,63 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+h1 {
+  font-size: 56px;
+  font-weight: bold;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 130%;
+  font-weight: bold;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 130%;
+  font-weight: bold;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.large {
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+  margin: 0;
+}
+
+.small {
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 400;
+  margin: 0;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 150%;
+  font-weight: 400;
+  margin: 0;
+}
+
+.container {
+  max-width: 1440px;
+  display: flex;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (max-width: 600px) {
+    padding: 0 8px;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
