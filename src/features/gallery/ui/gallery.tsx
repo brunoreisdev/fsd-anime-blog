@@ -1,30 +1,28 @@
-"use client";
+"use client"
 import { useEffect, useState, useTransition } from "react";
 import styles from "./gallery.module.scss";
-import { fetchAnimes } from "@shared/api/endpoints/animes";
-import { AnimeCards } from "@entities/anime";
+import { AnimeCards, useAnimeStore } from "@entities/anime";
 
 function Gallery() {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<Error | null>(null)
-  const [data, setData] = useState<any>(null)
+  const { animes, fetchAnimes } = useAnimeStore()
   
   useEffect(() => {
+    if(animes.length > 0) return
+
     startTransition(() => {
-      fetchAnimes().then(({ data }) => {
-        setData(data)
-      }).catch((error) => {
+      fetchAnimes().catch((error) => {
         setError(error)
       })
     })
-  }, [])
+  }, [animes.length, fetchAnimes])
 
   return (
     <div className={styles.gridWrapper}>
       {isPending && <h1>Loading...</h1>}
       {error && <p>Error: {error.message}</p>}
-      {data && data.map((anime: any) => {
-        console.log(anime)
+      {animes && animes.map((anime) => {
         return (
         <AnimeCards
           key={anime.mal_id}
@@ -34,6 +32,8 @@ function Gallery() {
           episodes={anime.episodes}
           rating={anime.rating}
           genres={anime.genres}
+          popularity={anime.popularity}
+          onClick={() => {}}
         />
       )})}
     </div>

@@ -10,7 +10,8 @@
   flex-direction: column;
   align-items: flex-start;
   cursor: pointer;
-  max-height: 500px;
+  height: 500px;
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-4px);
