@@ -1,42 +1,34 @@
 "use client"
-import { useEffect, useState, useTransition } from "react";
 import styles from "./gallery.module.scss";
 import { AnimeCards, useAnimeStore } from "@entities/anime";
+import { useAnimes } from "@entities/anime/api/queries";
 
-function Gallery() {
-  const [isPending, startTransition] = useTransition()
-  const [error, setError] = useState<Error | null>(null)
-  const { animes, fetchAnimes } = useAnimeStore()
-  
-  useEffect(() => {
-    if(animes.length > 0) return
-
-    startTransition(() => {
-      fetchAnimes().catch((error) => {
-        setError(error)
-      })
-    })
-  }, [animes.length, fetchAnimes])
+function Gallery({ title }: { title: string }) {
+  const search = useAnimeStore((s) => s.filters.search);
+  const { data: animes, isLoading, error } = useAnimes(search);
 
   return (
-    <div className={styles.gridWrapper}>
-      {isPending && <h1>Loading...</h1>}
-      {error && <p>Error: {error.message}</p>}
-      {animes && animes.map((anime) => {
-        return (
-        <AnimeCards
-          key={anime.mal_id}
-          title={anime.title}
-          description={anime.synopsis}
-          image={anime.images.jpg.image_url}
-          episodes={anime.episodes}
-          rating={anime.rating}
-          genres={anime.genres}
-          popularity={anime.popularity}
-          onClick={() => {}}
-        />
-      )})}
-    </div>
+    <>
+      <h2>{title}</h2>
+      <div className={styles.gridWrapper}>
+        {isLoading && <h1>Loading...</h1>}
+        {error && <p>Error: {(error as Error).message}</p>}
+        {animes && animes.map((anime) => {
+          return (
+          <AnimeCards
+            key={anime.mal_id}
+            title={anime.title}
+            description={anime.synopsis}
+            image={anime.images.jpg.image_url}
+            episodes={anime.episodes}
+            rating={anime.rating}
+            genres={anime.genres}
+            popularity={anime.popularity}
+            onClick={() => {}}
+          />
+        )})}
+      </div>
+    </>
   );
 }
 

@@ -37,7 +37,7 @@ type Broadcast = {
   string: string;
 }
 
-type Image {
+type Image = {
   image_url: string;
   small_image_url: string;
   large_image_url: string;

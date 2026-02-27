@@ -4,32 +4,27 @@ import styles from "./header.module.scss";
 import Image from "next/image";
 import { FaSearch } from "react-icons/fa";
 import { useAnimeStore } from "@entities/anime";
+import { useEffect, useState } from "react";
+import { useDebounce } from "@shared/hooks/use-debounce";
 
 function Header() {
-  const { fetchAnimes, filters } = useAnimeStore()
-
-  const debounce = () => {
-    let timeoutId: NodeJS.Timeout
-    return (func: () => void, delay: number) => {
-      clearTimeout(timeoutId)
-      timeoutId = setTimeout(() => func(), delay)
-    }
-  }
+  const { filters, setFilters } = useAnimeStore()
+  const [search, setSearch] = useState(filters.search)
+  const debouncedSearch = useDebounce(search, 500)
   
-  const debouncedFetchAnimes = debounce()
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    debouncedFetchAnimes(() => fetchAnimes({ ...filters, search: e.target.value }), 1000)
+    setSearch(e.target.value)
   }
 
-
-
-
+  useEffect(() => {
+    setFilters({ ...filters, search: debouncedSearch });
+  }, [debouncedSearch]);
+  
   return (
     <div className={styles.header}>
       <Image src={logo} alt="Logo" className={styles.logo} />
       <div className={styles.searchContainer}>
-        <input className={styles.searchInput} placeholder="Buscar" onChange={handleSearch} />
+        <input className={styles.searchInput} value={search} placeholder="Buscar" onChange={handleSearch} />
         <button className={styles.searchButton}>
           <FaSearch size={18} color="#fff" />
         </button>
