@@ -1,7 +1,39 @@
+
+@use "@shared/styles/variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  align-self: flex-start;
+}
+
 .gridWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, min(310px));
   gap: 1rem;
   width: 100%;
   justify-content: flex-start;
+}
+
+.seeMore {
+  border: 1px solid;
+  padding: 15px;
+  border-radius: 8px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  background-color: $primary-light;
+  color: $neutrals-lightest;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $primary-medium;
+  }
 }

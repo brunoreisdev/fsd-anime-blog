@@ -8,6 +8,8 @@ type Filters = {
 interface AnimeState {
   filters: Filters
   setFilters: (filters: Filters) => void
+  page: number
+  setPage: (page: number) => void
 }
 
 export const useAnimeStore = create<AnimeState>((set) => ({
@@ -15,5 +17,7 @@ export const useAnimeStore = create<AnimeState>((set) => ({
     genre: [],
     search: '',
   },
+  page: 1,
+  setPage: (page: number) => set({ page }),
   setFilters: (filters: Filters) => set({ filters }),
 }))

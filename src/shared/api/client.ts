@@ -5,7 +5,7 @@ export class Client {
     this.baseUrl = baseUrl || "https://api.jikan.moe/v4";
   }
 
-  async get(endpoint: string, searchParams?: Record<string, string>) {
+  async get(endpoint: string, searchParams?: Record<string, string | number>) {
     const url = new URL(`${this.baseUrl}/${endpoint}`);
 
     if (searchParams) {

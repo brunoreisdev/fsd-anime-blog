@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { useAnimeStore } from "@entities/anime";
 import { useEffect, useState } from "react";
 import { useDebounce } from "@shared/hooks/use-debounce";
+import OptionModal from "@shared/ui/option-modal/option-modal";
 
 function Header() {
   const { filters, setFilters } = useAnimeStore()
@@ -25,10 +26,11 @@ function Header() {
       <Image src={logo} alt="Logo" className={styles.logo} />
       <div className={styles.searchContainer}>
         <input className={styles.searchInput} value={search} placeholder="Buscar" onChange={handleSearch} />
-        <button className={styles.searchButton}>
+        <button className={styles.searchButton} >
           <FaSearch size={18} color="#fff" />
         </button>
       </div>
+      {/* <OptionModal open onClose={() => {}} /> */}
     </div>
   );
 }

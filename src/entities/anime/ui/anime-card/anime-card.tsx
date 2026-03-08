@@ -15,7 +15,7 @@ interface CardProps {
   episodes: number;
   rating: string;
   genres: Array<Genre>;
-  popularity: number;
+  score: number;
   onClick: () => void;
 }
 
@@ -26,7 +26,7 @@ function AnimeCards({
   episodes,
   rating,
   genres,
-  popularity,
+  score,
   onClick
 }: CardProps) {
   const renderGenres = () => {
@@ -51,7 +51,7 @@ function AnimeCards({
           <div className={styles.cardInfo}>
             <small className="small">Eps: {episodes}</small>
             <div className={styles.divisor}>•</div>
-            <small className="small">Popularity: {popularity}</small>
+            <small className="small">Score: {score}</small>
           </div>
           <RatingBadge ratingString={rating} />
         </div>

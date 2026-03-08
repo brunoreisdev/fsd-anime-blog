@@ -1,17 +1,24 @@
-import { Anime } from "@shared/models/anime";
+import { AnimesResponse } from "@shared/models/anime";
 import { Client } from "../client";
 
 const client = new Client();
 
-export function fetchAnimes(): Promise<Anime[]> {
-  return client.get("anime").then((response) => response.data);
+const params = {
+  limit: 24,
 }
 
-export function fetchAnimeById(id: string): Promise<Anime> {
-  return client.get(`anime/${id}`).then((response) => response.data);
+export function fetchAnimes(page: number): Promise<AnimesResponse> {
+  return client.get("anime", { ...params, page }).then((response) => response);
 }
 
-export function fetchAnimeBySearch(search: string): Promise<Anime[]> {
-  return client.get(`anime?q=${search}`).then((response) => response.data);
+export function fetchAnimeById(id: string): Promise<AnimesResponse> {
+  return client.get(`anime/${id}`).then((response) => response);
 }
 
+export function fetchAnimeBySearch(page: number, search: string): Promise<AnimesResponse> {
+  return client.get('anime', { ...params, page, q: search }).then((response) => response);
+}
+
+export function fetchTopAnimes(page: number): Promise<AnimesResponse> {
+  return client.get('top/anime', {...params, page }).then((response) => response)
+}
