@@ -10,7 +10,7 @@ export class Client {
 
     if (searchParams) {
       Object.entries(searchParams).forEach(([key, value]) => {
-        url.searchParams.append(key, value);
+        url.searchParams.append(key, String(value));
       });
     }
 

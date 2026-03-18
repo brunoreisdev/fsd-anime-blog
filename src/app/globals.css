@@ -90,6 +90,11 @@ h3 {
   }
 }
 
+.page-container {
+  padding-top: 80px;
+  margin: 0 auto;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

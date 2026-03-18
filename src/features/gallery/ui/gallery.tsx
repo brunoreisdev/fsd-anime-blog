@@ -2,11 +2,13 @@
 import styles from "./gallery.module.scss";
 import { AnimeCards, useAnimeStore } from "@entities/anime";
 import { useTopAnimes } from "@entities/anime/api/queries";
+import { useRouter } from "next/navigation";
 
 function Gallery({ title }: { title: string }) {
   const search = useAnimeStore((s) => s.filters.search);
   const page = useAnimeStore((s) => s.page);
   const { data, isLoading, error } = useTopAnimes(search, page);
+  const router = useRouter();
   const {pagination, data: animes} = data || {};
 
   const handleSeeMore = () => {
@@ -33,7 +35,7 @@ function Gallery({ title }: { title: string }) {
             rating={anime.rating}
             genres={anime.genres}
             score={anime.score}
-            onClick={() => {}}
+            onClick={() => {router.push(`/anime/${anime.mal_id}`)}}
           />
         )})}
       </div>

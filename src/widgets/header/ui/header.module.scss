@@ -11,8 +11,9 @@
   box-sizing: border-box;
   margin-bottom: 32px;
   border: solid 1px $neutrals-extra-light;
-  position: absolute;
+  position: fixed;
   top: 0;
+  z-index: 10;
 }
 
 .logo {

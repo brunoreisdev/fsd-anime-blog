@@ -111,3 +111,7 @@ export interface AnimesResponse {
   data: Anime[];
   pagination: Pagination;
 }
+
+export interface AnimeResponse {
+  data: Anime;
+}

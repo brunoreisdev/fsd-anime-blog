@@ -1,4 +1,4 @@
-import { fetchAnimeBySearch, fetchAnimes, fetchTopAnimes } from "@shared/api/endpoints/animes";
+import { fetchAnimeById, fetchAnimeBySearch, fetchAnimes, fetchTopAnimes } from "@shared/api/endpoints/animes";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 export const useAnimes = (search?: string, page = 1) => {
@@ -12,7 +12,7 @@ export const useAnimes = (search?: string, page = 1) => {
   });
 }
 
-export const useTopAnimes = (page = 1) => {
+export const useTopAnimes = (search?: string, page = 1) => {
   return useQuery({
     queryKey: ["animes", page],
     queryFn: () => fetchTopAnimes(page),
@@ -20,3 +20,12 @@ export const useTopAnimes = (page = 1) => {
     staleTime: 60 * 2000,
   })
 }
+
+export const useAnimeById = (id: string) => {
+  return useQuery({
+    queryKey: ["anime", id],
+    queryFn: () => fetchAnimeById(id),
+    staleTime: 60 * 1000,
+  })
+}
+
