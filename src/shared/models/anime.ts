@@ -115,3 +115,24 @@ export interface AnimesResponse {
 export interface AnimeResponse {
   data: Anime;
 }
+
+export interface AnimeEpisode {
+  mal_id: number;
+  url: string;
+  title: string;
+  title_japanese: string;
+  title_romanji: string;
+  aired: string;
+  score: number;
+  filler: boolean;
+  recap: boolean;
+  forum_url: string;
+}
+
+export interface AnimeEpisodesResponse {
+  data: AnimeEpisode[];
+  pagination: {
+    last_visible_page: number,
+    has_next_page: boolean,
+  };
+}

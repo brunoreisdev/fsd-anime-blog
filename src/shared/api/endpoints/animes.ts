@@ -1,4 +1,4 @@
-import { AnimeResponse, AnimesResponse } from "@shared/models/anime";
+import { AnimeEpisodesResponse, AnimeResponse, AnimesResponse } from "@shared/models/anime";
 import { Client } from "../client";
 
 const client = new Client();
@@ -21,4 +21,8 @@ export function fetchAnimeBySearch(page: number, search: string): Promise<Animes
 
 export function fetchTopAnimes(page: number): Promise<AnimesResponse> {
   return client.get('top/anime', {...params, page }).then((response) => response)
+}
+
+export function fetchAnimeEpisodes(id: string, page: number): Promise<AnimeEpisodesResponse> {
+  return client.get(`anime/${id}/episodes`, {page}).then((response) => response)
 }

@@ -1,16 +1,28 @@
 .content {
-  max-width: 1200px;
+  max-width: 70%;
   display: flex;
   margin: 0 auto;
-  padding: 0 16px; 
   flex-direction: column;
   gap: 16px;
 
-  @media (max-width: 600px) {
-    padding: 0 8px; 
+  h2 {
+    margin-bottom: 8px;
   }
 }
 
 .synopsis {
   white-space: pre-line;
+}
+
+.ratingAndGenres {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.genresContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
 }
